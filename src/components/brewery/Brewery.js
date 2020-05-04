@@ -9,5 +9,6 @@ export const Brewery = ({brewery}) => (
         <div>Curb Side Pick Up: {brewery.curbSidePickUp ? "Yes" : "No"}</div>
         <div>Delivery: {brewery.delivery ? "Yes" : "No"}</div>
         <div>Location: {brewery.location}</div>
+        <div>Edit</div>
     </section>
 )
