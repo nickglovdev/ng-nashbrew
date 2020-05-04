@@ -57,6 +57,7 @@ export const BreweryProvider = (props) => {
         getBreweries()
     }, [])
 
+   
     return (
         <BreweryContext.Provider value={
             {

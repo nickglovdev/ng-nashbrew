@@ -30,28 +30,28 @@ export default props => {
         <form className="breweryForm">
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="animalBreed">Breed of Animal: </label>
+                    <label htmlFor="breweryName">Name of Bewery</label>
                     <input
                         type="text"
-                        id="animalBreed"
-                        ref={breed}
+                        id="brewery"
+                        ref={breweryName}
                         required
                         autoFocus
                         className="form-control"
-                        placeholder="animal breed"
+                        placeholder="Brewery Name"
                     />
                 </div>
             </fieldset>
             <button type="submit"
                 onClick = {
                     evt => {
-                        evt.preventDefault
+                        evt.preventDefault()
                         constructNewBrewery()
                     }
                 }
                     className="btn btn-primary">
-             </button>
                     Add Brewery
+             </button>
                 }
         </form>
     )
