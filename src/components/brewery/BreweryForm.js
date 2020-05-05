@@ -24,7 +24,7 @@ export default props => {
             location: location.current.value,
             userId: userId
         }
-        console.log(newBrewery)
+        
         addBrewery(newBrewery).then(props.toggles)
     }
 

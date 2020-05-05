@@ -1,20 +1,23 @@
 import React, { useContext, useState } from "react"
-import { BreweryContext } from "./BreweryProvider"
+import { BeerContext } from "./BeerProvider"
+import { BreweryContext } from "../brewery/BreweryProvider"
 import { Button, Modal, ModalBody, ModalHeader} from "reactstrap"
-import BreweryForm from "./BreweryForm"
-import { Brewery } from "./Brewery"
-import "./Brewery.css"
+import BeerForm from "./BeerForm"
+import { Beer } from "./Beer"
+import "./Beer.css"
 
-const BreweryList = () => {
+const BeerList = () => {
+    const { beers } = useContext(BeerContext)
     const { breweries } = useContext(BreweryContext)
-    
+   
 
     const [modal, setModal] = useState(false)
     const toggle = () => setModal(!modal)
 
+
     return (
         <>
-            <h2>breweries</h2>
+            <h2>Beers</h2>
             <Button onClick={() => {
                 // check if the user is authenticated
                 const userId = localStorage.getItem("nashBrew_user")
@@ -22,24 +25,28 @@ const BreweryList = () => {
                     // If the user is authenticated, show the animal form
                     toggle()
                 }
-            }}>Add Brewery</Button>
-            <div className="breweries">
-            {
-                breweries.map(brew => {
-                    return <Brewery key={brew.id} brewery={brew} />
-                })
-             }
+            }}>New Beer</Button>
+            <div className="beers">
+                {
+                    
+                    beers.map(beer => {
+                        const MatchingBrewery = breweries.find(b => b.id === beer.breweryId)
+                        debugger
+                        return <Beer key={beer.id} beer={beer} brewery={MatchingBrewery}
+                             />
+                    })
+                }
             </div>
 
             <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader toggle={toggle}>
-                    Add Brewery
+                    Add Beer
                 </ModalHeader>
                 <ModalBody>
-                    <BreweryForm toggles={toggle}/>
+                    <BeerForm toggles={toggle}/>
                 </ModalBody>
             </Modal>
         </>
     )
 }
- export default BreweryList
+ export default BeerList
