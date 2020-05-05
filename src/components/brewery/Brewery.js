@@ -10,5 +10,6 @@ export const Brewery = ({brewery}) => (
         <div>Delivery: {brewery.delivery ? "Yes" : "No"}</div>
         <div>Location: {brewery.location}</div>
         <div>Edit</div>
+        
     </section>
 )
