@@ -1,9 +1,10 @@
 import React, { useContext, useRef } from "react"
 import { BeerContext } from "./BeerProvider"
+import { BreweryContext } from "../brewery/BreweryProvider"
 
 export default props => {
-
     const { addBeer } = useContext(BeerContext)
+    const{ breweries } = useContext(BreweryContext)
 
     const beerName = useRef()
     const howManyBeers = useRef()
@@ -19,7 +20,7 @@ export default props => {
                 price: price.content.value,
                 alcholContent: alcholContent.content.value,
                 breweryId: parseInt(breweryId.current.value),
-                beerTypeId: parseInt(beerTypeId.current.value),
+                beerTypeId: parseInt(beerTypeId.current.value)
             }
         addBeer(newBeerObject).then(props.toggles)
     }
@@ -77,6 +78,25 @@ export default props => {
                         autoFocus
                         className="form-control"
                     />
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="breweryId">Assign to location: </label>
+                    <select
+                        defaultValue=""
+                        name="brewery"
+                        ref={breweryId}
+                        id="breweryId"
+                        className="form-control"
+                    >
+                        <option value="0">Select a location</option>
+                        {breweries.map(e => (
+                            <option key={e.id} value={e.id}>
+                                {e.breweryName}
+                            </option>
+                        ))}
+                    </select>
                 </div>
             </fieldset>
             <button type="submit"
