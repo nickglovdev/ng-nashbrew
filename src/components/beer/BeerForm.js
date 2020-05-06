@@ -1,10 +1,12 @@
 import React, { useContext, useRef } from "react"
 import { BeerContext } from "./BeerProvider"
 import { BreweryContext } from "../brewery/BreweryProvider"
+import { BeerTypeContext } from "../beerType/BeerTypeProvider"
 
 export default props => {
     const { addBeer } = useContext(BeerContext)
-    const{ breweries } = useContext(BreweryContext)
+    const { breweries } = useContext(BreweryContext)
+    const { beerTypes } = useContext(BeerTypeContext)
 
     const beerName = useRef()
     const howManyBeers = useRef()
@@ -14,11 +16,13 @@ export default props => {
     const beerTypeId = useRef()
 
     const constructNewBeer = () => {
+
+
        const newBeerObject = {
                 beerName: beerName.current.value,
                 howManyBeers: howManyBeers.current.value,
-                price: price.content.value,
-                alcholContent: alcholContent.content.value,
+                price: price.current.value,
+                alcholContent: alcholContent.current.value,
                 breweryId: parseInt(breweryId.current.value),
                 beerTypeId: parseInt(beerTypeId.current.value)
             }
@@ -82,10 +86,23 @@ export default props => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
+                    <label htmlFor="alcholContent">Alchol Content: </label>
+                    <input
+                        type="text"
+                        id="alcholContent"
+                        ref={alcholContent}
+                        required
+                        autoFocus
+                        className="form-control"
+                    />
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className="form-group">
                     <label htmlFor="breweryId">Assign to location: </label>
                     <select
                         defaultValue=""
-                        name="brewery"
+                        name="Brewery"
                         ref={breweryId}
                         id="breweryId"
                         className="form-control"
@@ -94,6 +111,25 @@ export default props => {
                         {breweries.map(e => (
                             <option key={e.id} value={e.id}>
                                 {e.breweryName}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+            </fieldset>
+            <fieldset>
+                <div className="form-group">
+                    <label htmlFor="beerTypeId">Assign to location: </label>
+                    <select
+                        defaultValue=""
+                        name="beerTypeId"
+                        ref={beerTypeId}
+                        id="beerTypeId"
+                        className="form-control"
+                    >
+                        <option value="0">Select a location</option>
+                        {beerTypes.map(e => (
+                            <option key={e.id} value={e.id}>
+                                {e.name}
                             </option>
                         ))}
                     </select>
