@@ -48,7 +48,7 @@ export default props => {
                 <div className="form-group">
                     <label htmlFor="howManyBeers">Number of Beers: </label>
                     <input
-                        type="text"
+                        type="number"
                         id="howManyBeers"
                         ref={howManyBeers}
                         required
@@ -59,23 +59,9 @@ export default props => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="beerName">Name of Beer: </label>
-                    <input
-                        type="text"
-                        id="beerName"
-                        ref={beerName}
-                        required
-                        autoFocus
-                        className="form-control"
-                        placeholder="Beer Name"
-                    />
-                </div>
-            </fieldset>
-            <fieldset>
-                <div className="form-group">
                     <label htmlFor="price">Price: </label>
                     <input
-                        type="text"
+                        type="number"
                         id="price"
                         ref={price}
                         required
@@ -88,7 +74,7 @@ export default props => {
                 <div className="form-group">
                     <label htmlFor="alcholContent">Alchol Content: </label>
                     <input
-                        type="text"
+                        type="number"
                         id="alcholContent"
                         ref={alcholContent}
                         required
@@ -118,7 +104,7 @@ export default props => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="beerTypeId">Assign to location: </label>
+                    <label htmlFor="beerTypeId">Type of Beer: </label>
                     <select
                         defaultValue=""
                         name="beerTypeId"
@@ -126,7 +112,7 @@ export default props => {
                         id="beerTypeId"
                         className="form-control"
                     >
-                        <option value="0">Select a location</option>
+                        <option value="0">Type of Beer</option>
                         {beerTypes.map(e => (
                             <option key={e.id} value={e.id}>
                                 {e.name}
