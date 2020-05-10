@@ -46,7 +46,7 @@ export default props => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="howManyBeers">Number of Beers: </label>
+                    <label htmlFor="howManyBeers">Beers in a Pack: </label>
                     <input
                         type="number"
                         id="howManyBeers"
@@ -74,7 +74,7 @@ export default props => {
                 <div className="form-group">
                     <label htmlFor="alcholContent">Alchol Content: </label>
                     <input
-                        type="number"
+                        type="text"
                         id="alcholContent"
                         ref={alcholContent}
                         required

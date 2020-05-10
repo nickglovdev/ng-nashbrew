@@ -1,3 +1,21 @@
-.breweryData {
+.breweries {
+    display:flex;
+    flex-wrap: wrap;
+}
+
+.breweryData, .brewButton {
     margin:1em;
+}
+.breweryData {
+    padding:1em;
+    border: 1px solid black;
+    width:48%;
+}
+
+.beerButton {
+    margin:1em 0 6px 0
+}
+
+.beerData {
+    display:flex;
 }

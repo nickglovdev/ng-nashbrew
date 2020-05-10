@@ -8,6 +8,7 @@ import { Button, Modal, ModalBody, ModalHeader} from "reactstrap"
 export const Brewery = ({brewery, foundBeers}) => {
     const [modal, setModal] = useState(false)
     const toggle = () => setModal(!modal)
+    
 
     return (
     
@@ -18,7 +19,7 @@ export const Brewery = ({brewery, foundBeers}) => {
         <div>Delivery: {brewery.delivery ? "Yes" : "No"}</div>
         <div>Location: {brewery.location}</div>
         <div>
-            <Button onClick={() => {
+            <Button className="beerButton" onClick={() => {
                 // check if the user is authenticated
                 const userId = localStorage.getItem("nashBrew_user")
                 if(userId){
@@ -45,4 +46,5 @@ export const Brewery = ({brewery, foundBeers}) => {
         </div>
         
     </section>
-)}
+    )
+}

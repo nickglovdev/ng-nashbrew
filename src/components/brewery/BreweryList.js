@@ -17,7 +17,7 @@ const BreweryList = () => {
     return (
         <>
             <h2>Breweries</h2>
-            <Button onClick={() => {
+            <Button className="brewButton" onClick={() => {
                 // check if the user is authenticated
                 const userId = localStorage.getItem("nashBrew_user")
                 if(userId){
