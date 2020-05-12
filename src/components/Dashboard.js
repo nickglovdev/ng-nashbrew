@@ -2,8 +2,8 @@ import React from "react"
 import { BreweryProvider } from "./brewery/BreweryProvider"
 import BreweryList from "./brewery/BreweryList"
 import { BeerProvider } from "./beer/BeerProvider"
-import BeerList from "./beer/BeerList"
 import { BeerTypeProvider } from "./beerType/BeerTypeProvider"
+import { EditBrewery } from "./brewery/EditBrewery"
 
 
 

@@ -33,7 +33,7 @@ const BreweryList = () => {
                 })
              }
             </div>
-
+            
             <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader toggle={toggle}>
                     Add Brewery
@@ -44,5 +44,7 @@ const BreweryList = () => {
             </Modal>
         </>
     )
+
 }
+
  export default BreweryList

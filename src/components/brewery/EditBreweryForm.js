@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react"
 import { BreweryContext } from "./BreweryProvider"
 
 
+
 export const EditBreweryForm = ({brewery, toggleEdit}) => {
     const { updateBrewery } = useContext(BreweryContext)
 
@@ -17,15 +18,16 @@ export const EditBreweryForm = ({brewery, toggleEdit}) => {
 
    const editBrewery = () => {
     updateBrewery({
-        id: newBreweryId.id,
-        breweryName: newBrewery.breweryName,
-        hoursOfOperation: newHoursOfOperation.hoursOfOperation,
-        curbSidePickUp: newCurbsidePickUp,
-        delivery: newDelivery.delivery,
-        location: newLocation.location,
+        id: updatedBrewery.id,
+        breweryName: updatedBrewery.breweryName,
+        hoursOfOperation: updatedBrewery.hoursOfOperation,
+        curbSidePickUp: updatedBrewery.curbSidePickUp,
+        delivery: updatedBrewery.delivery,
+        location: updatedBrewery.location,
         userId: parseInt(localStorage.getItem("nashBrew_user"))
     })
         .then(toggleEdit)
+        
    }
    return(
     <form className="breweryEditForm">
@@ -52,7 +54,7 @@ export const EditBreweryForm = ({brewery, toggleEdit}) => {
         <button type="submit" className="btn btn-primary"
             onClick={evt => {
                 evt.preventDefault()
-                editAnimal()
+                editBrewery()
             }}>
             Save Updates
         </button>
