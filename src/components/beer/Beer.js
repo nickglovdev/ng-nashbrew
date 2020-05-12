@@ -23,17 +23,21 @@ export const Beer = ({ beer }) => {
             <div className="beer-space">Beers in a Pack: {beer.howManyBeers}</div>
             <div className="beer-space">Price: ${beer.price}</div>
             <div className="beer-space">Alcohol Content: {beer.alcoholContent}%</div>
-            <div className="beerEdit">
-                {
-                    <div
-                        className="fakeLink href"
+            
+            <div>
+                
+                <div className="beerEdit">
+                    {
+                        <div
+                            className="fakeLink href"
 
-                        onClick={() => {
-                            setBeer({ beer })
-                            toggle()
-                        }}
-                    >Edit</div>
-                }
+                            onClick={() => {
+                                setBeer({ beer })
+                                toggleEdit()
+                            }}
+                        >Edit Beer</div>
+                    }
+                </div>
             </div>
 
             <Modal isOpen={editModal} toggle={toggleEdit}>
@@ -44,7 +48,7 @@ export const Beer = ({ beer }) => {
                     <EditBeerForm key={selectedBeer.beer.id} toggleEdit={toggleEdit} {...selectedBeer} />
                 </ModalBody>
             </Modal>
-                
+{/*                 
             <Modal isOpen={modal} toggle={toggle}>
                 <ModalHeader toggle={toggle}>
                     {selectedBeer.beer.name}
@@ -62,7 +66,7 @@ export const Beer = ({ beer }) => {
                         toggle()
                     }}>Delete</Button>
                 </ModalFooter>
-            </Modal>
+            </Modal> */}
 
 
 

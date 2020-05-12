@@ -2,13 +2,12 @@ import React, { useContext, useState } from "react"
 import { BreweryContext } from "./BreweryProvider"
 import { Button, Modal, ModalBody, ModalHeader} from "reactstrap"
 import BreweryForm from "./BreweryForm"
+import BeerForm from "../beer/BeerForm"
 import { Brewery } from "./Brewery"
 import "./Brewery.css"
-import { BeerContext } from "../beer/BeerProvider"
 
 const BreweryList = () => {
     const { breweries } = useContext(BreweryContext)
-    const { beers } = useContext(BeerContext)
     
 
     const [modal, setModal] = useState(false)
@@ -17,7 +16,7 @@ const BreweryList = () => {
     return (
         <>
             <h2>Breweries</h2>
-            <Button className="brewButton" onClick={() => {
+            <div className="buttons"><Button className="brewButton" onClick={() => {
                 // check if the user is authenticated
                 const userId = localStorage.getItem("nashBrew_user")
                 if(userId){
@@ -25,11 +24,19 @@ const BreweryList = () => {
                     toggle()
                 }
             }}>Add Brewery</Button>
+            <Button className="beerButton" onClick={() => {
+                        // check if the user is authenticated
+                        const userId = localStorage.getItem("nashBrew_user")
+                        if (userId) {
+                            // If the user is authenticated, show the animal form
+                            toggle()
+                        }
+                    }}>New Beer</Button>
+            </div>
             <div className="breweries">
             {
                 breweries.map(brew => {
-                    const foundBeers = beers.filter(b => b.breweryId === brew.id)
-                    return <Brewery key={brew.id} brewery={brew} foundBeers={foundBeers} />
+                    return <Brewery key={brew.id} brewery={brew} />
                 })
              }
             </div>
@@ -42,6 +49,15 @@ const BreweryList = () => {
                     <BreweryForm toggles={toggle}/>
                 </ModalBody>
             </Modal>
+
+            <Modal isOpen={modal} toggle={toggle}>
+                        <ModalHeader toggle={toggle}>
+                            Add Beer
+                        </ModalHeader>
+                        <ModalBody>
+                            <BeerForm toggles={toggle} />
+                        </ModalBody>
+                    </Modal>
         </>
     )
 

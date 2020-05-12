@@ -11,7 +11,7 @@ export default props => {
     const beerName = useRef()
     const howManyBeers = useRef()
     const price = useRef()
-    const alcholContent = useRef()
+    const alcoholContent = useRef()
     const breweryId = useRef()
     const beerTypeId = useRef()
 
@@ -22,7 +22,7 @@ export default props => {
                 beerName: beerName.current.value,
                 howManyBeers: howManyBeers.current.value,
                 price: price.current.value,
-                alcholContent: alcholContent.current.value,
+                alcoholContent: alcoholContent.current.value,
                 breweryId: parseInt(breweryId.current.value),
                 beerTypeId: parseInt(beerTypeId.current.value)
             }
@@ -72,11 +72,11 @@ export default props => {
             </fieldset>
             <fieldset>
                 <div className="form-group">
-                    <label htmlFor="alcholContent">Alchol Content: </label>
+                    <label htmlFor="alcoholContent">Alcohol Content: </label>
                     <input
                         type="text"
-                        id="alcholContent"
-                        ref={alcholContent}
+                        id="alcoholContent"
+                        ref={alcoholContent}
                         required
                         autoFocus
                         className="form-control"
@@ -88,7 +88,7 @@ export default props => {
                     <label htmlFor="breweryId">Assign to location: </label>
                     <select
                         defaultValue=""
-                        name="Brewery"
+                        name="breweryId"
                         ref={breweryId}
                         id="breweryId"
                         className="form-control"

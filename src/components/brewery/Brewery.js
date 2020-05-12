@@ -8,7 +8,7 @@ import { BeerContext } from "../beer/BeerProvider"
 
 // When we use Animal component in AnimalList, React takes the keys passed
 // to the Animal component and puts it into one object
-export const Brewery = ({ brewery, foundBeers }) => {
+export const Brewery = ({ brewery }) => {
 
     const { deleteBrewery, updateBrewery, breweries } = useContext(BreweryContext)
     const { beers } = useContext(BeerContext)
@@ -16,6 +16,8 @@ export const Brewery = ({ brewery, foundBeers }) => {
     const [selectedBrewery, setBrewery] = useState({
         brewery: {},
     })
+
+    const foundBeers = beers.filter(b => b.breweryId === brewery.id)
 
     const [modal, setModal] = useState(false)
     const toggle = () => setModal(!modal)
@@ -39,8 +41,8 @@ export const Brewery = ({ brewery, foundBeers }) => {
 
                             onClick={() => {
                                 setBrewery({ brewery })
-                                toggle()
-                            }}
+                               toggleEdit()
+                            }} 
                         >Edit</div>
                     }
                 </div>
@@ -55,56 +57,27 @@ export const Brewery = ({ brewery, foundBeers }) => {
                             toggle()
                         }
                     }}>New Beer</Button>
-                    <div className="breweries">
 
+                    <div className="beerList">
+                        <div>{foundBeers.map(beer => {
+                            return (
+                                <Beer beer={beer} />
+                            )
+                        })}
+                        </div>
                     </div>
 
-                    
-                    <div>{foundBeers.map(beer => {
-                        return (
-                            <Beer beer={beer} />
-                        )
-                    })}
-                    </div>
 
                     <Modal isOpen={modal} toggle={toggle}>
                         <ModalHeader toggle={toggle}>
-                            Add Brewery
-                </ModalHeader>
+                            Add Beer
+                        </ModalHeader>
                         <ModalBody>
                             <BeerForm toggles={toggle} />
                         </ModalBody>
                     </Modal>
                 </div>
-
-                <Modal isOpen={editModal} toggle={toggleEdit}>
-                    <ModalHeader toggle={toggleEdit}>
-                        {selectedBrewery.brewery.name}
-                    </ModalHeader>
-                    <ModalBody>
-                        <EditBreweryForm key={selectedBrewery.brewery.id} toggleEdit={toggleEdit} {...selectedBrewery} />
-                    </ModalBody>
-                </Modal>
-
-                <Modal isOpen={modal} toggle={toggle}>
-                    <ModalHeader toggle={toggle}>
-                        {selectedBrewery.brewery.name}
-                    </ModalHeader>
-                    <ModalBody>
-                        <Brewery key={selectedBrewery.brewery.id} {...selectedBrewery} />
-                    </ModalBody>
-                    <ModalFooter>
-                        <Button color="info" onClick={() => {
-                            toggle()
-                            toggleEdit()
-                        }}>Edit</Button>
-                        <Button color="danger" onClick={() => {
-                            deleteBrewery(selectedBrewery.brewery.id)
-                            toggle()
-                        }}>Delete</Button>
-                    </ModalFooter>
-                </Modal>
-
+    
             </div>
 
         </section>
