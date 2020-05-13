@@ -42,33 +42,19 @@ export const Beer = ({ beer }) => {
 
             <Modal isOpen={editModal} toggle={toggleEdit}>
                 <ModalHeader toggle={toggleEdit}>
-                    {selectedBeer.beer.name}
+                    Edit Beer
                 </ModalHeader>
                 <ModalBody>
                     <EditBeerForm key={selectedBeer.beer.id} toggleEdit={toggleEdit} {...selectedBeer} />
                 </ModalBody>
-            </Modal>
-{/*                 
-            <Modal isOpen={modal} toggle={toggle}>
-                <ModalHeader toggle={toggle}>
-                    {selectedBeer.beer.name}
-                </ModalHeader>
-                <ModalBody>
-                    <Beer key={selectedBeer.beer.id} {...selectedBeer} />
-                </ModalBody>
                 <ModalFooter>
-                    <Button color="info" onClick={() => {
-                        toggle()
-                        toggleEdit()
-                    }}>Edit</Button>
                     <Button color="danger" onClick={() => {
                         deleteBeer(selectedBeer.beer.id)
                         toggle()
                     }}>Delete</Button>
                 </ModalFooter>
-            </Modal> */}
-
-
+            </Modal>
+                
 
         </section>
     )

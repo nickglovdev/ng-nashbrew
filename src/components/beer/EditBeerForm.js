@@ -98,7 +98,7 @@ export const EditBeerForm = ({ beer, toggleEdit }) => {
                         <option value="0">Select a location</option>
                         {breweries.map(e => (
                             <option key={e.id} value={e.id}>
-                                {e.name}
+                                {e.breweryName}
                             </option>
                         ))}
                     </select>

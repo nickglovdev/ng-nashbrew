@@ -41,23 +41,14 @@ export const Brewery = ({ brewery }) => {
 
                             onClick={() => {
                                 setBrewery({ brewery })
-                               toggleEdit()
-                            }} 
-                        >Edit</div>
+                                toggleEdit()
+                            }}
+                        >Edit Brewery</div>
                     }
                 </div>
 
 
                 <div>
-                    <Button className="beerButton" onClick={() => {
-                        // check if the user is authenticated
-                        const userId = localStorage.getItem("nashBrew_user")
-                        if (userId) {
-                            // If the user is authenticated, show the animal form
-                            toggle()
-                        }
-                    }}>New Beer</Button>
-
                     <div className="beerList">
                         <div>{foundBeers.map(beer => {
                             return (
@@ -66,18 +57,24 @@ export const Brewery = ({ brewery }) => {
                         })}
                         </div>
                     </div>
-
-
-                    <Modal isOpen={modal} toggle={toggle}>
-                        <ModalHeader toggle={toggle}>
-                            Add Beer
-                        </ModalHeader>
-                        <ModalBody>
-                            <BeerForm toggles={toggle} />
-                        </ModalBody>
-                    </Modal>
                 </div>
-    
+
+                <Modal isOpen={editModal} toggle={toggleEdit}>
+                    <ModalHeader toggle={toggleEdit}>
+                        Edit Brewery
+                    </ModalHeader>
+                    <ModalBody>
+                        <EditBreweryForm key={selectedBrewery.brewery.id} toggleEdit={toggleEdit} {...selectedBrewery} />
+                    </ModalBody>
+                    <ModalFooter>
+                        <Button color="danger" onClick={() => {
+                            deleteBrewery(selectedBrewery.brewery.id)
+                            toggle()
+                        }}>Delete</Button>
+                    </ModalFooter>
+                </Modal>
+
+
             </div>
 
         </section>
