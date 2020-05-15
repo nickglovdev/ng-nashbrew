@@ -1,3 +1,18 @@
+.breweries {
+    display:flex;
+    flex-wrap: wrap;
+}
+
 .breweryData {
     margin:1em;
+}
+.breweryData {
+    width: 47%;
+    border-radius: 4%;
+    box-shadow: 1px 2px 3px #4c4cb4;
+    background: #c8c8fa82;
+}
+
+.beerData {
+    display:flex;
 }
