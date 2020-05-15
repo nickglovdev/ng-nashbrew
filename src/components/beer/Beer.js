@@ -2,6 +2,7 @@ import React, { useContext, useState } from "react"
 import { Button, Modal, ModalBody, ModalHeader, ModalFooter } from "reactstrap"
 import { BeerContext } from "./BeerProvider"
 import { EditBeerForm } from "./EditBeerForm"
+import "./Beer.css"
 
 export const Beer = ({ beer }) => {
 
@@ -19,10 +20,10 @@ export const Beer = ({ beer }) => {
 
     return (
         <section className="beerData">
-            <div className="beer-space">Name of Beer: {beer.beerName}</div>
-            <div className="beer-space">Beers in a Pack: {beer.howManyBeers}</div>
-            <div className="beer-space">Price: ${beer.price}</div>
-            <div className="beer-space">Alcohol Content: {beer.alcoholContent}%</div>
+            <div className="beer__space"><span className="beer__title">Name of Beer: </span>{beer.beerName}</div>
+            <div className="beer__space"><span className="beer__title">Beers in a Pack: </span>{beer.howManyBeers}</div>
+            <div className="beer__space"><span className="beer__title">Price: $ </span>{beer.price}</div>
+            <div className="beer__space"><span className="beer__title">Alcohol Content: </span>{beer.alcoholContent}%</div>
             
             <div>
                 

@@ -3,17 +3,14 @@
     flex-wrap: wrap;
 }
 
-.breweryData, .brewButton {
+.breweryData {
     margin:1em;
 }
 .breweryData {
-    padding:1em;
-    border: 1px solid black;
-    width:48%;
-}
-
-.beerButton {
-    margin:1em 0 6px 0
+    width: 47%;
+    border-radius: 4%;
+    box-shadow: 1px 2px 3px #4c4cb4;
+    background: #c8c8fa82;
 }
 
 .beerData {

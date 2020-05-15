@@ -18,23 +18,29 @@ const BreweryList = () => {
 
     return (
         <>
+
             <h2>Breweries</h2>
-            <Button className="brewButton" onClick={() => {
-                // check if the user is authenticated
-                const userId = localStorage.getItem("nashBrew_user")
-                if (userId) {
-                    // If the user is authenticated, show the animal form
-                    toggle()
-                }
-            }}>Add Brewery</Button>
-            <Button className="beerButton" onClick={() => {
-                // check if the user is authenticated
-                const userId = localStorage.getItem("nashBrew_user")
-                if (userId) {
-                    // If the user is authenticated, show the animal form
-                    toggleBeer()
-                }
-            }}>New Beer</Button>
+            <div>
+                <Button className="brewButton" onClick={() => {
+                    // check if the user is authenticated
+                    const userId = localStorage.getItem("nashBrew_user")
+                    if (userId) {
+                        // If the user is authenticated, show the animal form
+                        toggle()
+                    }
+                }}>Add Brewery</Button>
+
+                <Button className="beerButton" onClick={() => {
+                    // check if the user is authenticated
+                    const userId = localStorage.getItem("nashBrew_user")
+                    if (userId) {
+                        // If the user is authenticated, show the animal form
+                        toggleBeer()
+                    }
+                }}>New Beer</Button>
+            </div>
+
+
             <div className="breweries">
                 {
                     breweries.map(brew => {
